@@ -1,0 +1,91 @@
+<mxGraphModel dx="1000" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <mxCell id="SystemBoundary" value="Clinical Trial Subject Recruitment Engine" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+      <mxGeometry x="240" y="80" width="360" height="520" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ActorCandidate" value="Trial Candidate" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="100" y="160" width="30" height="60" as="geometry" />
+    </mxCell>
+
+    <mxCell id="ActorResearcher" value="Clinical Researcher" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+      <mxGeometry x="680" y="420" width="30" height="60" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_SubmitSurvey" value="Submit Screening Survey" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="110" y="60" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_EvaluateEligibility" value="Evaluate Eligibility" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="110" y="170" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_CheckCriteria" value="Check Inclusion/Exclusion Criteria" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="210" y="270" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_ViewResult" value="View Eligibility Result" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="10" y="270" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_TrackConsent" value="Track Consent Milestones" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="110" y="380" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_LogVisit" value="Log Visit Compliance" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="110" y="455" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_ManageRecord" value="Manage Subject Record" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="210" y="380" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="UC_ReviewFailed" value="Review Failed Criteria" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="SystemBoundary">
+      <mxGeometry x="210" y="455" width="140" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Assoc_Candidate_Submit" edge="1" parent="1" source="ActorCandidate" target="UC_SubmitSurvey">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Assoc_Candidate_Result" edge="1" parent="1" source="ActorCandidate" target="UC_ViewResult">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Assoc_Researcher_Evaluate" edge="1" parent="1" source="ActorResearcher" target="UC_EvaluateEligibility">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Assoc_Researcher_Consent" edge="1" parent="1" source="ActorResearcher" target="UC_TrackConsent">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Assoc_Researcher_Visit" edge="1" parent="1" source="ActorResearcher" target="UC_LogVisit">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Assoc_Researcher_Record" edge="1" parent="1" source="ActorResearcher" target="UC_ManageRecord">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Assoc_Researcher_Result" edge="1" parent="1" source="ActorResearcher" target="UC_ViewResult">
+      <mxGeometry width="50" height="50" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Rel_Include_Criteria" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="SystemBoundary" source="UC_EvaluateEligibility" target="UC_CheckCriteria">
+      <mxGeometry width="160" relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="Rel_Extend_Failed" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="html=1;verticalAlign=bottom;labelBackgroundColor=none;endArrow=open;endFill=0;dashed=1;rounded=0;" edge="1" parent="SystemBoundary" source="UC_ReviewFailed" target="UC_ViewResult">
+      <mxGeometry width="160" relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="280" y="320" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+
+  </root>
+</mxGraphModel>
