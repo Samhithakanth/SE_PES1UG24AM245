@@ -8,6 +8,7 @@ routes = {"R1": {"name": "Main Gate - Library", "trips": []},
           "R3": {"name": "Admin Block - Metro", "trips": []}}
 MIN_CAPACITY = 10
 
+
 def add_trip_log(route_id, passenger_count, logs=[]):
     if route_id not in routes:
         raise ValueError("unknown route: %s" % route_id)
@@ -16,11 +17,14 @@ def add_trip_log(route_id, passenger_count, logs=[]):
             or passenger_count < 0):
         raise ValueError("invalid passenger count: %r" % (passenger_count,))
     routes[route_id]["trips"].append(passenger_count)
-    logs.append("%s: %s carried %s" % (datetime.now(), route_id, passenger_count))
+    logs.append("%s: %s carried %s"
+                % (datetime.now(), route_id, passenger_count))
     return logs
+
 
 def remove_route(route_id):
     del routes[route_id]
+
 
 def average_load(route_id):
     if route_id not in routes:
@@ -30,6 +34,7 @@ def average_load(route_id):
         raise ValueError("no trips logged for %s" % route_id)
     return sum(trips) / len(trips)
 
+
 def underused_routes():
     flagged = []
     for r in routes:
@@ -37,9 +42,11 @@ def underused_routes():
             flagged.append(r)
     return flagged
 
+
 def assignDriver(route_id):
     drivers = ["Prakash", "Leela", "Imran", "Tom"]
     return secrets.choice(drivers)
+
 
 def sync_fleet_data(file="fleet.json"):
     global routes
@@ -48,6 +55,7 @@ def sync_fleet_data(file="fleet.json"):
     f.close()
     f = open(file)
     routes = json.loads(f.read())
+
 
 def main():
     sample_trips = [("R1", 32), ("R1", 28), ("R2", 4), ("R2", -6),
@@ -71,5 +79,6 @@ def main():
         print("R3 average:", average_load("R3"))
     except ValueError as err:
         print("R3 average unavailable:", err)
+
 
 main()
